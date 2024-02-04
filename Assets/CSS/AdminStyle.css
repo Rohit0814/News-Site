@@ -54,6 +54,17 @@ body{
     background: rgb(220, 220, 220);
 }
 
+.main-board{
+    width: 100%;
+    justify-content: right;
+    background-color: red;
+}
+
+.main-board .sub-board{
+    width: 80%;
+    float: right;
+}
+
 
 
 @media screen and (max-width:450px) {

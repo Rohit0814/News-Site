@@ -13,4 +13,4 @@
 <div class="header-text">
         <span>News Site (Admin)</span>
 </div>
-    </div>
+</div>
