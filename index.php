@@ -48,11 +48,11 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="Admin/Login.php">Admin</a></li>
-                            <li><a class="dropdown-item" href="#">Editor</a></li>
+                            <li><a class="dropdown-item" href="Author/Login.php">Editor</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Users</a></li>
+                            <li><a class="dropdown-item" href="User/Login.php">Users</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -14,6 +14,7 @@
             $pubactiveClass = '';
             $useractiveClass = '';
             $settingactiveClass = '';
+            $categoryactiveClass = '';
 
             $currentURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
@@ -28,6 +29,9 @@
             } elseif ($currentURL == 'http://localhost/NewsSite/Admin/setting.php') {
                 $settingactiveClass = 'active';
             }
+            elseif ($currentURL == 'http://localhost/NewsSite/Admin/category.php') {
+                $categoryactiveClass = 'active';
+            }
             // die(''.$DBactiveClass.''.$reqactiveClass.'');
             ?>
             <a href="dashboard.php">
@@ -41,6 +45,9 @@
             </a>
             <a href="user.php">
                 <li class="<?php echo $useractiveClass  ?>">User</li>
+            </a>
+            <a href="category.php">
+                <li class="<?php echo $categoryactiveClass ?>">Category</li>
             </a>
             <a href="setting.php">
                 <li class="<?php echo $settingactiveClass  ?>">Setting</li>

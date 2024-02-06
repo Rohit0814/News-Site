@@ -17,7 +17,7 @@ if (isset($_SESSION["admin_name"]) and isset($_SESSION["admin_password"])) {
                 <div class="card-body">
 
 
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>

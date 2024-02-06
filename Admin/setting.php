@@ -19,7 +19,7 @@ if (isset($_SESSION["admin_name"]) and isset($_SESSION["admin_password"])) {
 
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" disabled>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" value="<?php echo $_SESSION['admin_name']; ?>" disabled>
                     </div>
 
                     <label for="inputPassword5" class="form-label">Change Password</label>
