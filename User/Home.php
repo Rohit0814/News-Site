@@ -11,6 +11,10 @@
 </head>
 
 <body>
+    <?php 
+        session_start();
+        // die($_SESSION['profile']);
+    ?>
     <div class="header-text">
         <span>News Site</span>
     </div>
@@ -44,7 +48,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link" href="#" role="button" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#requestModel">
                             Publisher Request
                         </a>
                     </li>
@@ -54,19 +58,66 @@
                         </a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <img src="../Assets/images/ProfilePic/ProfilePicWhatsApp Image 2024-02-06 at 1.51.36 PM.jpeg" class="profile-pic mx-1 d-block" alt="..." width=50px height=50px style="border-radius:50px">
+                <form class="d-flex" role="search" action="Logout.php" method="post">
+                    <img src='../Assets/images/ProfilePic/ProfilePic<?php echo $_SESSION["profile"]; ?>' class="profile-pic mx-1 d-block" alt="..." width=50px height=50px style="border-radius:50px">
                     <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#" style="font-size:22px; color:white"><i class="fa-brands fa-bitcoin" ></i> 100</a>
                     </li>
                     </ul>
 
-                    <button type="button" class="btn btn-danger">Logout</button>
+                    <button type="submit" class="btn btn-danger">Logout</button>
                 </form>
             </div>
         </div>
     </nav>
+
+
+
+
+    <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="requestModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Publisher Request</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Channel Name</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Channel">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Channel TagLine</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+<div class="mb-3">
+<label for="inputPassword5" class="form-label">Password</label>
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+</div>
+
+<div class="mb-3">
+  <label for="formFileMultiple" class="form-label">Channel Logo</label>
+  <input class="form-control" type="file" id="formFileMultiple" multiple>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Request</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
     <div class="news-card container my-5">
