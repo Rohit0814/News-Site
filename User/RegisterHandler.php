@@ -1,5 +1,6 @@
 <?php
-    $userName = $_POST["userName"];
+    $userName = $_POST["username"];
+    $email = $_POST["email"];
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm-password"];
     $profile_pic = $_FILES["profilePic"];
@@ -21,7 +22,7 @@
         $upload_directory = "../Assets/images/ProfilePic/ProfilePic"; 
         $target_file = $upload_directory . $file_name;
         if(move_uploaded_file($file_tmp, $target_file)) {
-            $sql = "insert into users(email,password,profile_img,Gender) values('$userName','$password','$file_name','$gender')";
+            $sql = "insert into users(Username,email,password,profile_img,Gender) values('$userName','$email','$password','$file_name','$gender')";
             $result = mysqli_query($conn, $sql);
             header("location: http://localhost/NewsSite/User/Login.php");
         } 

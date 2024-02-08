@@ -14,10 +14,13 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     session_start();
     while($row = mysqli_fetch_assoc($result)) {
-        $_SESSION["user_name"] = $row['email'];
+        $_SESSION["id"] = $row["user_id"];
+        $_SESSION["user_name"] = $row['Username'];
+        $_SESSION["email"] = $row['email'];
         $_SESSION["user_password"] = $row['password'];
         $_SESSION["profile"]= $row["profile_img"];
         $_SESSION["gender"]= $row["Gender"];
+        $_SESSION["req_id"]=$row["req_id"];
     }
     header("location: http://localhost/NewsSite/user/Home.php");
 } else {

@@ -22,12 +22,23 @@
                             <h5 class="card-title text-center">User Register</h5>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="userName">
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
                             </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">UserName</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="username">
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div style="width:45%">
                             <label for="inputPassword5" class="form-label">Password</label>
-                            <input type="password" id="inputPassword5" name="password" class="form-control" aria-describedby="passwordHelpBlock">
+                            <input type="password" id="inputPassword5" name="password" class="form-control" aria-describedby="passwordHelpBlock" style="width:100%;">
+                                </div>
+                                <div style="width:45%">
                             <label for="inputPassword5" class="form-label">Confirm Password</label>
                             <input type="password" id="inputPassword5" name="confirm-password" class="form-control" aria-describedby="passwordHelpBlock">
+                                </div>
+</div>
                             <div id="passwordHelpBlock" class="form-text">
                                 Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                             </div>
