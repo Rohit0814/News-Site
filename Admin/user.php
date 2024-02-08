@@ -21,37 +21,41 @@ if (isset($_SESSION["admin_name"]) and isset($_SESSION["admin_password"])) {
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">Profile Image</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">TagLine</th>
-                                <th scope="col">Channel Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Created At</th>
                                 <th scope="col">Message</th>
                                 <th scope="col">Remove</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td><button type="button" class="btn btn-success"><i class="fa-solid fa-message"></i></button></td>
-                                <td><button type="button" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                <td><button type="button" class="btn btn-success"><i class="fa-solid fa-message"></i></button></td>
-                                <td><button type="button" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td><button type="button" class="btn btn-success"><i class="fa-solid fa-message"></i></button></td>
-                                <td><button type="button" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i></button></td>
-                            </tr>
+
+
+                        <?php 
+                                $server_name = "localhost";
+                                $user_name = "root";
+                                $password = "";
+                                $database_name = "newsdb";
+
+                                $conn = mysqli_connect($server_name, $user_name, $password, $database_name);
+                                $sql = "select * from users";
+                                $result = mysqli_query($conn, $sql);
+                                if($row = mysqli_fetch_assoc($result)) {
+                                    echo "<tr style='cursor:pointer;'>
+                                    <th scope='row' style='line-height:50px'>".$row["user_id"]."</th>
+                                    <td><img src=../Assets/images/ProfilePic/ProfilePic".$row["profile_img"]." height=50px width=50px style='border-radius:50%'></td>
+                                    <td style='line-height:50px'>".$row["Username"]."</td>
+                                    <td style='line-height:50px'>".$row["email"]."</td>
+                                    <td style='line-height:50px'>".$row["Gender"]."</td>
+                                    <td style='line-height:50px'>".$row["timestamp"]."</td>
+                                    <td style='line-height:50px'><button type='button' class='btn btn-success'><i class='fa-solid fa-circle-check'></i></button></td>
+                                    <td style='line-height:50px'><button type='button' class='btn btn-danger'><i class='fa-solid fa-circle-xmark'></i></button></td>
+                                </tr>";
+                                }
+                                mysqli_close($conn);
+                            ?>
                         </tbody>
                     </table>
 
