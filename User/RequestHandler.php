@@ -31,6 +31,16 @@
             $sql1 = "insert into userrequest(request_id,channel_name,channel_tagline,channel_password,channel_logo) values($current_id,'$request_channel_name','$request_channel_tagline','$request_password','$file_name')";
             $result1 = mysqli_query($conn, $sql1);
 
+            $sql4="select (Total_request,Pending_request) from status";
+            $result4 = mysqli_query($conn, $sql4);
+            $row4=mysqli_fetch_assoc($result4);
+            $total_request = $row4["Total_request"];
+            $pending_request=$row4["Pending_request"];
+            $total_request=$total_request+1;
+            $pending_request= $pending_request+ 1;
+            $sql5="update status set (Total_request=$total_request, Pending_request=$pending_request) where status_Id=1";
+            $result5 = mysqli_query($conn, $sql5);
+
             $sql2="update users set req_id=$current_id where user_id=".$_SESSION["id"];
             $result2 = mysqli_query($conn, $sql2);
             setcookie("request", 'success', time()+ 10);

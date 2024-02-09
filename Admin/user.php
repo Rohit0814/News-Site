@@ -42,7 +42,7 @@ if (isset($_SESSION["admin_name"]) and isset($_SESSION["admin_password"])) {
                                 $conn = mysqli_connect($server_name, $user_name, $password, $database_name);
                                 $sql = "select * from users";
                                 $result = mysqli_query($conn, $sql);
-                                if($row = mysqli_fetch_assoc($result)) {
+                                while($row = mysqli_fetch_assoc($result)) {
                                     echo "<tr style='cursor:pointer;'>
                                     <th scope='row' style='line-height:50px'>".$row["user_id"]."</th>
                                     <td><img src=../Assets/images/ProfilePic/ProfilePic".$row["profile_img"]." height=50px width=50px style='border-radius:50%'></td>

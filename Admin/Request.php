@@ -16,7 +16,18 @@ if (isset($_SESSION["admin_name"]) and isset($_SESSION["admin_password"])) {
                         <div class="card" style="width: 18rem; background:#012052; color:white">
                             <div class="card-body">
                                 <h5 class="card-title">Total Request</h5>
-                                <p class="card-text"><i class="fa-solid fa-eye"></i> 1000</p>
+                                <?php
+                                $server_name = "localhost";
+                                $user_name="root";
+                                $password= "";
+                                $database_name="newsdb";
+                                $conn=mysqli_connect($server_name,$user_name,$password,$database_name);
+                                $sql="select * from status";
+                                $result=mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result)> 0) {
+                                    $row=mysqli_fetch_array($result);
+                                    echo "<p class='card-text'><i class='fa-solid fa-eye'></i> ". $row["Total_request"] ."</p>";
+                                ?>
                                 <a href="#" class="btn btn-primary">Check</a>
                             </div>
                         </div>
@@ -25,7 +36,9 @@ if (isset($_SESSION["admin_name"]) and isset($_SESSION["admin_password"])) {
                         <div class="card" style="width: 18rem; background:#012052; color:white">
                             <div class="card-body">
                                 <h5 class="card-title">Pending</h5>
-                                <p class="card-text"><i class="fa-solid fa-eye"></i> 500</p>
+                                <?php
+                                    echo "<p class='card-text'><i class='fa-solid fa-eye'></i> ".$row["Pending_request"]."</p>"
+                                ?>
                                 <a href="#" class="btn btn-primary">Check</a>
                             </div>
                         </div>
@@ -34,7 +47,11 @@ if (isset($_SESSION["admin_name"]) and isset($_SESSION["admin_password"])) {
                         <div class="card" style="width: 18rem; background:#012052; color:white">
                             <div class="card-body">
                                 <h5 class="card-title">Approved</h5>
-                                <p class="card-text"><i class="fa-solid fa-eye"></i> 700</p>
+                                <?php
+                                    echo "<p class='card-text'><i class='fa-solid fa-eye'></i> ".$row["Approved_request"]."</p>";
+                                }
+                                mysqli_close($conn);
+                                ?>
                                 <a href="#" class="btn btn-primary">Check</a>
                             </div>
                         </div>
@@ -72,7 +89,7 @@ if (isset($_SESSION["admin_name"]) and isset($_SESSION["admin_password"])) {
                                 $conn = mysqli_connect($server_name, $user_name, $password, $database_name);
                                 $sql = "select * from users as us, userrequest as ur where us.req_id=ur.request_id";
                                 $result = mysqli_query($conn, $sql);
-                                if($row = mysqli_fetch_assoc($result)) {
+                                while($row = mysqli_fetch_assoc($result)) {
                                     echo "<tr style='cursor:pointer'>
                                     <th scope='row'>".$row["request_id"]."</th>
                                     <td>".$row["Username"]."</td>
