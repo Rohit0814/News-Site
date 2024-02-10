@@ -65,7 +65,6 @@ if (isset($_SESSION["admin_name"]) and isset($_SESSION["admin_password"])) {
                 </div>
                 <div class="card-body">
 
-
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -87,25 +86,26 @@ if (isset($_SESSION["admin_name"]) and isset($_SESSION["admin_password"])) {
                                 $database_name = "newsdb";
 
                                 $conn = mysqli_connect($server_name, $user_name, $password, $database_name);
-                                $sql = "select * from users as us, userrequest as ur where us.req_id=ur.request_id";
+                                $sql = "select * from users as us, userrequest as ur where (us.req_id=ur.request_id)";
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_assoc($result)) {
-                                    echo "<tr style='cursor:pointer'>
+                                    if( $row["status"] == null) {
+                                    echo "
+                                    <tr style='cursor:pointer'>
                                     <th scope='row'>".$row["request_id"]."</th>
                                     <td>".$row["Username"]."</td>
                                     <td>".$row["email"]."</td>
                                     <td>".$row["Channel_Name"]."</td>
                                     <td>".$row["Channel_Tagline"]."</td>
-                                    <td><button type='button' class='btn btn-success'><i class='fa-solid fa-circle-check'></i></button></td>
-                                    <td><button type='button' class='btn btn-danger'><i class='fa-solid fa-circle-xmark'></i></button></td>
+                                    <td><a href='RequestHandler.php?id=".$row["request_id"]."' name='approve' class='btn btn-success'><i class='fa-solid fa-circle-check'></i></a></td>
+                                    <td><a href='RejectHandler.php?id=".$row["request_id"]."' class='btn btn-danger'><i class='fa-solid fa-circle-xmark'></i></button></td>
                                 </tr>";
                                 }
+                            }
                                 mysqli_close($conn);
                             ?>
                         </tbody>
                     </table>
-
-
                 </div>
             </div>
 
